@@ -23,8 +23,7 @@ class LoginviewController: UIViewController, FBSDKLoginButtonDelegate {
                 // The login failed. Check error to see why.
                 if (self.loginTextField.text.isEmpty) {
                     
-                    let ale
-                    rt = UIAlertView()
+                    let alert = UIAlertView()
                     alert.title = "Missing Fields"
                     alert.message = "One or more of the fields are blank."
                     alert.addButtonWithTitle("Ok")
@@ -44,7 +43,6 @@ class LoginviewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        if (FBSDKAccessToken.currentAccessToken() != nil)
 //        {
 //            println("already logged in")
@@ -111,8 +109,8 @@ class LoginviewController: UIViewController, FBSDKLoginButtonDelegate {
             {
                 // Do work
             }
+            self.performSegueWithIdentifier("LoggedIn", sender: self)
         }
-        self.performSegueWithIdentifier("LoggedIn", sender: self)
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {

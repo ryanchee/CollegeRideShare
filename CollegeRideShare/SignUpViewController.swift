@@ -49,7 +49,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         facebookButton = FBSDKLoginButton()
         let loginView : FBSDKLoginButton = FBSDKLoginButton()
         self.view.addSubview(loginView)
@@ -58,6 +58,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginView.delegate = self
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

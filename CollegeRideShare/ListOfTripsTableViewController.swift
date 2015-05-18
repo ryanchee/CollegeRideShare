@@ -10,8 +10,11 @@ import UIKit
 
 class ListOfTripsTableViewController: UITableViewController {
 
+    @IBOutlet var tripsTableView: UITableView!
+    var trips: [Trip] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateTripsArray()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,24 +33,50 @@ class ListOfTripsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return trips.count
     }
+    
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        let cell: TripTableViewCell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath) as! TripTableViewCell
+        let trip = trips[indexPath.row]
+        cell.driverName.text = PFUser.currentUser()!.username
+        cell.destination.text = trip.destination
+        cell.price.text = "\(trip.price)"
+        cell.departureDetails.text = trip.departureTime
 
         // Configure the cell...
 
         return cell
     }
-    */
+
+    
+    func populateTripsArray() {
+        var query = PFQuery(className:"Trips")
+        query.findObjectsInBackgroundWithBlock { [unowned self] (objects:[AnyObject]?, error:NSError?) -> Void in
+            let objects = objects as! [PFObject]
+            println("we have \(objects.count) objects)")
+            for object in objects {
+                let tripToAdd = Trip()
+                tripToAdd.destination = object["Destination"] as! String
+                tripToAdd.price = object["Price"] as! Int
+                tripToAdd.departureTime = object["DepartureTime"] as! String
+//                tripToAdd.currentRiders = ["object.CurrentRiders"] as! [User]
+//                tripToAdd.maxDropOffDistance = ["object.MaxDropOffDistance"] as! Int
+                self.trips.append(tripToAdd)
+            }
+            self.tripsTableView.reloadData()
+        }
+        
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
