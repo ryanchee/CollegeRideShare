@@ -45,6 +45,8 @@
 		9B7A990A1B09503300E3CD75 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A99091B09503300E3CD75 /* ProfileViewController.swift */; };
 		9B7A990C1B0963B700E3CD75 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A990B1B0963B700E3CD75 /* TripTableViewCell.swift */; };
 		9B7A990E1B09795F00E3CD75 /* ModelObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A990D1B09795F00E3CD75 /* ModelObjects.swift */; };
+		9B7A99101B0999F400E3CD75 /* DetailTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A990F1B0999F400E3CD75 /* DetailTripViewController.swift */; };
+		9B7A99121B099A2400E3CD75 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A99111B099A2400E3CD75 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,8 @@
 		9B7A99091B09503300E3CD75 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		9B7A990B1B0963B700E3CD75 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		9B7A990D1B09795F00E3CD75 /* ModelObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjects.swift; sourceTree = "<group>"; };
+		9B7A990F1B0999F400E3CD75 /* DetailTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTripViewController.swift; sourceTree = "<group>"; };
+		9B7A99111B099A2400E3CD75 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 				9B7A99051B089C9500E3CD75 /* PostATripViewController.swift */,
 				9B7A990D1B09795F00E3CD75 /* ModelObjects.swift */,
 				9B7A98921B08917000E3CD75 /* Main.storyboard */,
+				9B7A99111B099A2400E3CD75 /* ProfileViewController.swift */,
+				9B7A990F1B0999F400E3CD75 /* DetailTripViewController.swift */,
 				9B7A99091B09503300E3CD75 /* ProfileViewController.swift */,
 				9B7A99071B0948BA00E3CD75 /* SignUpViewController.swift */,
 				9B7A98B51B08931200E3CD75 /* LoginViewController.swift */,
@@ -346,8 +352,10 @@
 			files = (
 				9B7A990E1B09795F00E3CD75 /* ModelObjects.swift in Sources */,
 				9B7A990A1B09503300E3CD75 /* ProfileViewController.swift in Sources */,
+				9B7A99121B099A2400E3CD75 /* ProfileViewController.swift in Sources */,
 				9B7A990C1B0963B700E3CD75 /* TripTableViewCell.swift in Sources */,
 				9B7A988D1B08917000E3CD75 /* AppDelegate.swift in Sources */,
+				9B7A99101B0999F400E3CD75 /* DetailTripViewController.swift in Sources */,
 				9B7A99061B089C9500E3CD75 /* PostATripViewController.swift in Sources */,
 				9B7A99041B089C5800E3CD75 /* ListOfTripsTableViewController.swift in Sources */,
 				9B7A98B61B08931200E3CD75 /* LoginViewController.swift in Sources */,
