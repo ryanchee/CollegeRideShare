@@ -39,14 +39,17 @@
 		9B7A99001B0897DE00E3CD75 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98B11B08928600E3CD75 /* Bolts.framework */; };
 		9B7A99011B0897DE00E3CD75 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98B21B08928600E3CD75 /* FBSDKLoginKit.framework */; };
 		9B7A99021B0897DE00E3CD75 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98AE1B0891F000E3CD75 /* FBSDKCoreKit.framework */; };
-		9B7A99041B089C5800E3CD75 /* ListOfTripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A99031B089C5800E3CD75 /* ListOfTripsTableViewController.swift */; };
 		9B7A99061B089C9500E3CD75 /* PostATripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A99051B089C9500E3CD75 /* PostATripViewController.swift */; };
 		9B7A99081B0948BA00E3CD75 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A99071B0948BA00E3CD75 /* SignUpViewController.swift */; };
-		9B7A990A1B09503300E3CD75 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A99091B09503300E3CD75 /* ProfileViewController.swift */; };
 		9B7A990C1B0963B700E3CD75 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A990B1B0963B700E3CD75 /* TripTableViewCell.swift */; };
 		9B7A990E1B09795F00E3CD75 /* ModelObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A990D1B09795F00E3CD75 /* ModelObjects.swift */; };
-		9B7A99101B0999F400E3CD75 /* DetailTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A990F1B0999F400E3CD75 /* DetailTripViewController.swift */; };
-		9B7A99121B099A2400E3CD75 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A99111B099A2400E3CD75 /* ProfileViewController.swift */; };
+		9BD32B4D1B168C5600A7A634 /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B4C1B168C5600A7A634 /* ProfileCollectionViewController.swift */; };
+		9BD32B4F1B168FBB00A7A634 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B4E1B168FBB00A7A634 /* TripCollectionViewCell.swift */; };
+		9BD32B511B1695E400A7A634 /* ProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B501B1695E400A7A634 /* ProfileCollectionReusableView.swift */; };
+		9BD32B531B16F3D400A7A634 /* pluto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BD32B521B16F3D400A7A634 /* pluto.jpg */; };
+		9BD32B551B17C5EA00A7A634 /* ListOfTripsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B541B17C5EA00A7A634 /* ListOfTripsCollectionViewController.swift */; };
+		9BD32B571B1A11EE00A7A634 /* DetailTripCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B561B1A11EE00A7A634 /* DetailTripCollectionViewController.swift */; };
+		9BD32B5D1B1A138D00A7A634 /* TripCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B5C1B1A138D00A7A634 /* TripCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,14 +100,17 @@
 		9B7A98DF1B08979400E3CD75 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1.7.2/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
 		9B7A98E01B08979400E3CD75 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "parse-library-1.7.2/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		9B7A98E11B08979400E3CD75 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "parse-library-1.7.2/ParseUI.framework"; sourceTree = "<group>"; };
-		9B7A99031B089C5800E3CD75 /* ListOfTripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfTripsTableViewController.swift; sourceTree = "<group>"; };
 		9B7A99051B089C9500E3CD75 /* PostATripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostATripViewController.swift; path = ../PostATripViewController.swift; sourceTree = "<group>"; };
 		9B7A99071B0948BA00E3CD75 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9B7A99091B09503300E3CD75 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		9B7A990B1B0963B700E3CD75 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		9B7A990D1B09795F00E3CD75 /* ModelObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjects.swift; sourceTree = "<group>"; };
-		9B7A990F1B0999F400E3CD75 /* DetailTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTripViewController.swift; sourceTree = "<group>"; };
-		9B7A99111B099A2400E3CD75 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9BD32B4C1B168C5600A7A634 /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		9BD32B4E1B168FBB00A7A634 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
+		9BD32B501B1695E400A7A634 /* ProfileCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileCollectionReusableView.swift; path = ../ProfileCollectionReusableView.swift; sourceTree = "<group>"; };
+		9BD32B521B16F3D400A7A634 /* pluto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pluto.jpg; sourceTree = "<group>"; };
+		9BD32B541B17C5EA00A7A634 /* ListOfTripsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfTripsCollectionViewController.swift; sourceTree = "<group>"; };
+		9BD32B561B1A11EE00A7A634 /* DetailTripCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTripCollectionViewController.swift; sourceTree = "<group>"; };
+		9BD32B5C1B1A138D00A7A634 /* TripCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B7A99001B0897DE00E3CD75 /* Bolts.framework in Frameworks */,
 				9B7A98E91B0897CA00E3CD75 /* Bolts.framework in Frameworks */,
 				9B7A98EA1B0897CA00E3CD75 /* Parse.framework in Frameworks */,
 				9B7A98EB1B0897CA00E3CD75 /* ParseCrashReporting.framework in Frameworks */,
@@ -135,7 +142,6 @@
 				9B7A98FD1B0897CA00E3CD75 /* CoreGraphics.framework in Frameworks */,
 				9B7A98FE1B0897CA00E3CD75 /* CFNetwork.framework in Frameworks */,
 				9B7A98FF1B0897CA00E3CD75 /* AudioToolbox.framework in Frameworks */,
-				9B7A99001B0897DE00E3CD75 /* Bolts.framework in Frameworks */,
 				9B7A99011B0897DE00E3CD75 /* FBSDKLoginKit.framework in Frameworks */,
 				9B7A99021B0897DE00E3CD75 /* FBSDKCoreKit.framework in Frameworks */,
 			);
@@ -174,18 +180,21 @@
 			isa = PBXGroup;
 			children = (
 				9B7A988C1B08917000E3CD75 /* AppDelegate.swift */,
-				9B7A99031B089C5800E3CD75 /* ListOfTripsTableViewController.swift */,
-				9B7A990B1B0963B700E3CD75 /* TripTableViewCell.swift */,
+				9BD32B541B17C5EA00A7A634 /* ListOfTripsCollectionViewController.swift */,
 				9B7A99051B089C9500E3CD75 /* PostATripViewController.swift */,
+				9BD32B561B1A11EE00A7A634 /* DetailTripCollectionViewController.swift */,
 				9B7A990D1B09795F00E3CD75 /* ModelObjects.swift */,
 				9B7A98921B08917000E3CD75 /* Main.storyboard */,
-				9B7A99111B099A2400E3CD75 /* ProfileViewController.swift */,
-				9B7A990F1B0999F400E3CD75 /* DetailTripViewController.swift */,
-				9B7A99091B09503300E3CD75 /* ProfileViewController.swift */,
 				9B7A99071B0948BA00E3CD75 /* SignUpViewController.swift */,
 				9B7A98B51B08931200E3CD75 /* LoginViewController.swift */,
+				9BD32B4C1B168C5600A7A634 /* ProfileCollectionViewController.swift */,
+				9BD32B4E1B168FBB00A7A634 /* TripCollectionViewCell.swift */,
+				9BD32B501B1695E400A7A634 /* ProfileCollectionReusableView.swift */,
+				9BD32B5C1B1A138D00A7A634 /* TripCollectionReusableView.swift */,
+				9BD32B521B16F3D400A7A634 /* pluto.jpg */,
 				9B7A98951B08917000E3CD75 /* Images.xcassets */,
 				9B7A98971B08917000E3CD75 /* LaunchScreen.xib */,
+				9B7A990B1B0963B700E3CD75 /* TripTableViewCell.swift */,
 				9B7A988A1B08917000E3CD75 /* Supporting Files */,
 				9B7A98B71B0893BA00E3CD75 /* CollegeRideShare-Bridging-Header.h */,
 			);
@@ -330,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD32B531B16F3D400A7A634 /* pluto.jpg in Resources */,
 				9B7A98941B08917000E3CD75 /* Main.storyboard in Resources */,
 				9B7A98991B08917000E3CD75 /* LaunchScreen.xib in Resources */,
 				9B7A98961B08917000E3CD75 /* Images.xcassets in Resources */,
@@ -350,15 +360,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD32B5D1B1A138D00A7A634 /* TripCollectionReusableView.swift in Sources */,
+				9BD32B4D1B168C5600A7A634 /* ProfileCollectionViewController.swift in Sources */,
 				9B7A990E1B09795F00E3CD75 /* ModelObjects.swift in Sources */,
-				9B7A990A1B09503300E3CD75 /* ProfileViewController.swift in Sources */,
-				9B7A99121B099A2400E3CD75 /* ProfileViewController.swift in Sources */,
+				9BD32B571B1A11EE00A7A634 /* DetailTripCollectionViewController.swift in Sources */,
 				9B7A990C1B0963B700E3CD75 /* TripTableViewCell.swift in Sources */,
 				9B7A988D1B08917000E3CD75 /* AppDelegate.swift in Sources */,
-				9B7A99101B0999F400E3CD75 /* DetailTripViewController.swift in Sources */,
+				9BD32B511B1695E400A7A634 /* ProfileCollectionReusableView.swift in Sources */,
+				9BD32B4F1B168FBB00A7A634 /* TripCollectionViewCell.swift in Sources */,
 				9B7A99061B089C9500E3CD75 /* PostATripViewController.swift in Sources */,
-				9B7A99041B089C5800E3CD75 /* ListOfTripsTableViewController.swift in Sources */,
 				9B7A98B61B08931200E3CD75 /* LoginViewController.swift in Sources */,
+				9BD32B551B17C5EA00A7A634 /* ListOfTripsCollectionViewController.swift in Sources */,
 				9B7A99081B0948BA00E3CD75 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +508,7 @@
 				);
 				INFOPLIST_FILE = CollegeRideShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CollegeRideShare/CollegeRideShare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -514,6 +527,7 @@
 				);
 				INFOPLIST_FILE = CollegeRideShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CollegeRideShare/CollegeRideShare-Bridging-Header.h";
 			};

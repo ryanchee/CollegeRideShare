@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         Parse.setApplicationId("AGYiAHQnFCMVDrLfq50xiZNEUNLwjo26K8bXGG5I", clientKey: "20qEYU3wzpzOetOnSMAQ73gnmedzgfF3Gd0r5k5Q")
-        var object = PFObject(className: "TestClass")
+//        var object = PFObject(className: "TestClass")
 //        object.addObject("WTF", forKey: "favoriteFood")
 //        object.addObject("Chocolate", forKey: "favoriteIceCream")
 //        object.saveInBackgroundWithTarget(nil, selector: nil)
-//        
+// 
         
         return FBSDKApplicationDelegate.sharedInstance().application(application,didFinishLaunchingWithOptions: launchOptions)
 
