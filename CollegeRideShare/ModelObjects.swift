@@ -14,7 +14,7 @@ class User {
     var coordinates: [Double]?
     var phoneNumber: String!
     var postedTrips: [Trip]?
-    var car: [Car]?
+    var car: Car?
     var mutualFriends: [User]?
 }
 

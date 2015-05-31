@@ -7,20 +7,16 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>1043B5AC-4D47-47C7-A821-B7BC91D859B6</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>CollegeRideShare</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>341BD0AE2D1F617EC04D9B4CB26B12AA7C2CDBA6</key>
-		<string>https://github.com/timacorda/date-ideas.git</string>
 		<key>B235100B91DBE7A803B386507B21F33FA0396B50</key>
 		<string>https://github.com/ryanchee/CollegeRideShare.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CollegeRideShare.xcodeproj/project.xcworkspace</string>
+	<string>CollegeRideShare.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>341BD0AE2D1F617EC04D9B4CB26B12AA7C2CDBA6</key>
-		<string>../../..</string>
 		<key>B235100B91DBE7A803B386507B21F33FA0396B50</key>
 		<string>../..</string>
 	</dict>
@@ -32,14 +28,6 @@
 	<string>B235100B91DBE7A803B386507B21F33FA0396B50</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>341BD0AE2D1F617EC04D9B4CB26B12AA7C2CDBA6</string>
-			<key>IDESourceControlWCCName</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
