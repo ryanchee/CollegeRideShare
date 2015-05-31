@@ -29,7 +29,7 @@ class PostATripViewController: UIViewController {
         
         else {
             var trip = PFObject(className:"Trips")
-    //        trip["Driver"] = userObj?.name
+            trip["Driver"] = PFUser.currentUser()
             trip["Destination"] = destinationTextField.text
             destinationTextField.text = ""
             trip["Price"] = priceTextField.text.toInt()
