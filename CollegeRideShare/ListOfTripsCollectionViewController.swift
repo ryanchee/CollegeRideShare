@@ -93,16 +93,21 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
             let objects = objects as! [PFObject]
             println("we have \(objects.count) objects)")
             for object in objects {
-                let tripToAdd = Trip()
-                tripToAdd.destination = object["Destination"] as! String
-                tripToAdd.price = object["Price"] as! Int
-                tripToAdd.departureTime = object["DepartureTime"] as! String
-                tripToAdd.departureDateString = object["DepartureDateString"] as! String
-
-                //                tripToAdd.currentRiders = ["object.CurrentRiders"] as! [User]
-                //                tripToAdd.maxDropOffDistance = ["object.MaxDropOffDistance"] as! Int
-                self.trips.append(tripToAdd)
+                var date = object["DepartureDate"] as! NSDate
+                println("\(date) compared to \(NSDate())")
+                if date.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+                    let tripToAdd = Trip()
+                    tripToAdd.destination = object["Destination"] as! String
+                    tripToAdd.price = object["Price"] as! Int
+                    tripToAdd.departureTime = object["DepartureTime"] as! String
+                    tripToAdd.departureDateString = object["DepartureDateString"] as! String
+                    tripToAdd.departureDate = object["DepartureDate"] as! NSDate
+                    //                tripToAdd.currentRiders = ["object.CurrentRiders"] as! [User]
+                    //                tripToAdd.maxDropOffDistance = ["object.MaxDropOffDistance"] as! Int
+                    self.trips.append(tripToAdd)
+                }
             }
+            self.trips.sort({$0.departureDate.compare($1.departureDate) == NSComparisonResult.OrderedAscending})
             self.tripsCollectionView.reloadData()
         }
         
