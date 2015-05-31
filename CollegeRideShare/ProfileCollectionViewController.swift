@@ -57,7 +57,7 @@ class ProfileCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("trip", forIndexPath: indexPath) as! TripCollectionViewCell
         let trip = trips[indexPath.row]
-//        cell.driverPhoto.image = trip.
+        
         cell.driverName.text = PFUser.currentUser()!.username
         cell.destination.text = trip.destination
         cell.price.text = "\(trip.price)"

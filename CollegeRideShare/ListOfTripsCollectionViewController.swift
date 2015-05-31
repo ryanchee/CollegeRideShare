@@ -77,6 +77,7 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
         var query = PFUser.query()
         query!.whereKey("objectId", equalTo:trip.driver.objectId!)
         var driver = (query?.getFirstObject() as! PFUser)
+        
         cell.driverPhoto.image = UIImage(data: (driver["Image"] as! PFFile).getData()!)
         cell.driverName.text = driver.username
         cell.destination.text = trip.destination
