@@ -1461,22 +1461,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="143"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="9gb-Q7-qma">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="109" id="6a8-ch-yRn"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="6a8-ch-yRn"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="widthClass=compact">
-                                                <mask key="constraints">
-                                                    <include reference="6a8-ch-yRn"/>
-                                                </mask>
-                                            </variation>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a15-zw-gni">
                                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1550,6 +1534,23 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9gb-Q7-qma">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="109" id="6a8-ch-yRn"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="6a8-ch-yRn"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="8" y="8" width="109" height="103"/>
+                                                <mask key="constraints">
+                                                    <include reference="6a8-ch-yRn"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -1602,7 +1603,6 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
-                                        <exclude reference="9gb-Q7-qma"/>
                                         <exclude reference="a15-zw-gni"/>
                                         <exclude reference="nfo-xG-Q9f"/>
                                         <exclude reference="lNU-ec-4LF"/>
@@ -1613,6 +1613,7 @@
                                         <exclude reference="rTc-VI-0QA"/>
                                         <exclude reference="nwq-BJ-gO7"/>
                                         <exclude reference="ROV-p4-Van"/>
+                                        <exclude reference="9gb-Q7-qma"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="0KO-1m-6vI"/>
@@ -1652,7 +1653,6 @@
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
-                                        <include reference="9gb-Q7-qma"/>
                                         <include reference="a15-zw-gni"/>
                                         <include reference="nfo-xG-Q9f"/>
                                         <include reference="lNU-ec-4LF"/>
@@ -1663,6 +1663,7 @@
                                         <include reference="rTc-VI-0QA"/>
                                         <include reference="nwq-BJ-gO7"/>
                                         <include reference="ROV-p4-Van"/>
+                                        <include reference="9gb-Q7-qma"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="0KO-1m-6vI"/>
