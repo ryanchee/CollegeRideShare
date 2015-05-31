@@ -20,19 +20,30 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         user.username = usernameField.text
         user.password = passwordField.text
         user.email = emailField.text
-        // other fields can be set just like with PFObject
+        
+        //fields can be set just like with PFObject
         
         user.signUpInBackgroundWithBlock {
             (succeeded, error) -> Void in
             if error == nil {
-                // Hooray! Let them use the app now.
+                var image = UIImage(named: "defaultuserimage.jpg")
+                var data = UIImageJPEGRepresentation(image, 1)
+                user["Image"] = PFFile(name: "defaultuserimage.jpg", data: data)                // Hooray! Let them use the app now.
+                user.saveInBackground()
                 let alert = UIAlertView()
                 alert.title = "Registration Successful!"
                 alert.message = "You are now logged in."
                 alert.addButtonWithTitle("Ok")
                 alert.show()
-                self.performSegueWithIdentifier("SignedUp", sender: self)
-            } else {
+                PFUser.logInWithUsernameInBackground(user.username!, password: user.password!) {
+                    (user: PFUser?, error: NSError?) -> Void in
+                    if user != nil {
+                        // Do stuff after successful login.
+                        self.performSegueWithIdentifier("SignedUp", sender: self)
+                    }
+                }
+            }
+            else {
                 let alert = UIAlertView()
                 alert.title = "Missing Fields"
                 alert.message = "One or more of the fields are blank."

@@ -51,6 +51,7 @@
 		9BD32B571B1A11EE00A7A634 /* DetailTripCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B561B1A11EE00A7A634 /* DetailTripCollectionViewController.swift */; };
 		9BD32B5D1B1A138D00A7A634 /* TripCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD32B5C1B1A138D00A7A634 /* TripCollectionReusableView.swift */; };
 		D8CF3BB81B1A795F005465A7 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CF3BB71B1A795F005465A7 /* EditProfileViewController.swift */; };
+		D8CF3BBA1B1AA56B005465A7 /* defaultuserimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D8CF3BB91B1AA56B005465A7 /* defaultuserimage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		9BD32B561B1A11EE00A7A634 /* DetailTripCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTripCollectionViewController.swift; sourceTree = "<group>"; };
 		9BD32B5C1B1A138D00A7A634 /* TripCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCollectionReusableView.swift; sourceTree = "<group>"; };
 		D8CF3BB71B1A795F005465A7 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = ../EditProfileViewController.swift; sourceTree = "<group>"; };
+		D8CF3BB91B1AA56B005465A7 /* defaultuserimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = defaultuserimage.jpg; path = Images.xcassets/defaultuserimage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				9BD32B5C1B1A138D00A7A634 /* TripCollectionReusableView.swift */,
 				D8CF3BB71B1A795F005465A7 /* EditProfileViewController.swift */,
 				9BD32B521B16F3D400A7A634 /* pluto.jpg */,
+				D8CF3BB91B1AA56B005465A7 /* defaultuserimage.jpg */,
 				9B7A98951B08917000E3CD75 /* Images.xcassets */,
 				9B7A98971B08917000E3CD75 /* LaunchScreen.xib */,
 				9B7A990B1B0963B700E3CD75 /* TripTableViewCell.swift */,
@@ -342,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8CF3BBA1B1AA56B005465A7 /* defaultuserimage.jpg in Resources */,
 				9BD32B531B16F3D400A7A634 /* pluto.jpg in Resources */,
 				9B7A98941B08917000E3CD75 /* Main.storyboard in Resources */,
 				9B7A98991B08917000E3CD75 /* LaunchScreen.xib in Resources */,

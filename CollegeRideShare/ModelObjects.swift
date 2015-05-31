@@ -24,7 +24,7 @@ class Car {
 }
 
 class Trip {
-    var driver: User!
+    var driver: PFUser!
     var destination: String!
     var price: Int!
     var departureTime: String!

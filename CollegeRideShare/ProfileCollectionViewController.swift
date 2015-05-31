@@ -71,8 +71,7 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     func populateTripsArray() {
         var query = PFQuery(className:"Trips")
-        //need to change to Driver.name
-//        query.whereKey("Destination", equalTo: PFUser.currentUser()!.username!)
+        query.whereKey("Driver", equalTo: PFUser.currentUser()!)
         query.findObjectsInBackgroundWithBlock { [unowned self] (objects:[AnyObject]?, error:NSError?) -> Void in
             let objects = objects as! [PFObject]
             println("we have \(objects.count) objects)")
@@ -93,7 +92,6 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
     
     func setProfileImage(view: UIImageView) -> Void {
-        view.image = UIImage(named: "pluto.jpg")
         var query = PFQuery(className:"_User")
         println("username is: \(PFUser.currentUser()!.username!)")
         query.whereKey("username", equalTo:PFUser.currentUser()!.username!)
@@ -103,7 +101,7 @@ class ProfileCollectionViewController: UICollectionViewController {
                 println("this amny objects \(imageObjects.count)")
                 for object in imageObjects {
                     println("for loops")
-                    let thumbNail = object["Image"] as! PFFile
+                    let thumbNail = object["Image"]         as! PFFile
                     println("we got \(imageObjects.count) images!")
                     thumbNail.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in

@@ -73,7 +73,10 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
         let trip = trips[indexPath.row]
         //        cell.driverPhoto.image = UIImage(data: <#NSData#>)
         //getProfileImage()
-        cell.driverName.text = PFUser.currentUser()!.username
+        
+        var query = PFUser.query()
+        query!.whereKey("objectId", equalTo:trip.driver.objectId!)
+        cell.driverName.text = (query?.getFirstObject() as! PFUser).username
         cell.destination.text = trip.destination
         cell.price.text = "\(trip.price)"
         cell.departureDetails.text = trip.departureTime
@@ -96,7 +99,8 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
                 var date = object["DepartureDate"] as! NSDate
                 println("\(date) compared to \(NSDate())")
                 if date.compare(NSDate()) == NSComparisonResult.OrderedDescending {
-                    let tripToAdd = Trip()
+                    let tripToAdd:Trip = Trip()
+                    tripToAdd.driver = object["Driver"] as! PFUser
                     tripToAdd.destination = object["Destination"] as! String
                     tripToAdd.price = object["Price"] as! Int
                     tripToAdd.departureTime = object["DepartureTime"] as! String
