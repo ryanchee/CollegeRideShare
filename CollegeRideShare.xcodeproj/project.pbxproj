@@ -22,7 +22,6 @@
 		9B7A98EF1B0897CA00E3CD75 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98D01B08978200E3CD75 /* Bolts.framework */; };
 		9B7A98F01B0897CA00E3CD75 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98D11B08978200E3CD75 /* Parse.framework */; };
 		9B7A98F11B0897CA00E3CD75 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98D21B08978200E3CD75 /* ParseCrashReporting.framework */; };
-		9B7A98F21B0897CA00E3CD75 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98D31B08978200E3CD75 /* ParseFacebookUtils.framework */; };
 		9B7A98F31B0897CA00E3CD75 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98D41B08978200E3CD75 /* ParseFacebookUtilsV4.framework */; };
 		9B7A98F41B0897CA00E3CD75 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98D51B08978200E3CD75 /* ParseUI.framework */; };
 		9B7A98F51B0897CA00E3CD75 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7A98CE1B08976E00E3CD75 /* libsqlite3.dylib */; };
@@ -126,13 +125,12 @@
 				9B7A98E91B0897CA00E3CD75 /* Bolts.framework in Frameworks */,
 				9B7A98EA1B0897CA00E3CD75 /* Parse.framework in Frameworks */,
 				9B7A98EB1B0897CA00E3CD75 /* ParseCrashReporting.framework in Frameworks */,
-				9B7A98EC1B0897CA00E3CD75 /* ParseFacebookUtils.framework in Frameworks */,
 				9B7A98ED1B0897CA00E3CD75 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				9B7A98EE1B0897CA00E3CD75 /* ParseUI.framework in Frameworks */,
 				9B7A98EF1B0897CA00E3CD75 /* Bolts.framework in Frameworks */,
 				9B7A98F01B0897CA00E3CD75 /* Parse.framework in Frameworks */,
 				9B7A98F11B0897CA00E3CD75 /* ParseCrashReporting.framework in Frameworks */,
-				9B7A98F21B0897CA00E3CD75 /* ParseFacebookUtils.framework in Frameworks */,
+				9B7A98EC1B0897CA00E3CD75 /* ParseFacebookUtils.framework in Frameworks */,
 				9B7A98F31B0897CA00E3CD75 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				9B7A98F41B0897CA00E3CD75 /* ParseUI.framework in Frameworks */,
 				9B7A98F51B0897CA00E3CD75 /* libsqlite3.dylib in Frameworks */,

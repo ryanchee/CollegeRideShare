@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        object.addObject("Chocolate", forKey: "favoriteIceCream")
 //        object.saveInBackgroundWithTarget(nil, selector: nil)
 // 
-        
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+
         return FBSDKApplicationDelegate.sharedInstance().application(application,didFinishLaunchingWithOptions: launchOptions)
 
         // Override point for customization after application launch.

@@ -1165,6 +1165,21 @@
                                 <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAK-J0-8fS">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="159" y="162" width="82" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="customFacebookLogin:" destination="ScH-fd-3p8" eventType="touchUpInside" id="FGr-KQ-sM0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1198,6 +1213,7 @@
                                 <exclude reference="Fcn-Zs-rVJ"/>
                                 <exclude reference="5px-2P-D1f"/>
                                 <exclude reference="moa-28-CWq"/>
+                                <exclude reference="wAK-J0-8fS"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Dxb-mS-VgV"/>
@@ -1225,6 +1241,7 @@
                                 <include reference="Fcn-Zs-rVJ"/>
                                 <include reference="5px-2P-D1f"/>
                                 <include reference="moa-28-CWq"/>
+                                <include reference="wAK-J0-8fS"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Dxb-mS-VgV"/>

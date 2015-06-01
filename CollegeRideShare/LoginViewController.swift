@@ -13,20 +13,29 @@ class LoginviewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBAction func customFacebookLogin(sender: AnyObject) {
-//        var permissions = ["public_profile", "email", "user_friends"]
-//        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
-//            (user: PFUser?, error: NSError?) -> Void in
-//            if let user = user {
-//                if user.isNew {
-//                    println("User signed up and logged in through Facebook!")
-//                } else {
-//                    println("User logged in through Facebook!")
-//                }
-//            } else {
-//                println("Uh oh. The user cancelled the Facebook login.")
-//            }
-//        }
-//
+        var permissions = ["public_profile", "email", "user_friends"]
+//        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(<#launchOptions: [NSObject : AnyObject]?#>)
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) { [unowned self]
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    println("User signed up and logged in through Facebook!")
+                    self.returnUserData()
+                    self.performSegueWithIdentifier("LoggedIn", sender: self)
+                    
+                } else {
+                    println("User logged in through Facebook!")
+                    println("photo username is: \(PFUser.currentUser()!.username!)")
+                    self.returnUserData()
+                    self.performSegueWithIdentifier("LoggedIn", sender: self)
+
+                }
+            }
+            else {
+                println("Uh oh. The user cancelled the Facebook login.")
+            }
+        }
+
     }
     @IBAction func loginPressed(sender: AnyObject) {
         PFUser.logInWithUsernameInBackground(loginTextField.text as String, password: passwordTextField.text as String) {
@@ -86,7 +95,7 @@ class LoginviewController: UIViewController, FBSDKLoginButtonDelegate {
     func returnUserData()
     {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+        graphRequest.startWithCompletionHandler({ [unowned self] (connection, result, error) ->  Void in
             
             if ((error) != nil)
             {
@@ -96,48 +105,24 @@ class LoginviewController: UIViewController, FBSDKLoginButtonDelegate {
             else
             {
                 println("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
+                let userName : String = result.valueForKey("name") as! String
                 println("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
+                let userEmail : String = result.valueForKey("email") as! String
                 println("User Email is: \(userEmail)")
-                // Get user profile pic
-//                var fbSession = PFFacebookUtils.
-                var accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                let url = NSURL(string: "https://graph.facebook.com/me/picture?type=large&return_ssl_resources=1&access_token="+accessToken)
-                let urlRequest = NSURLRequest(URL: url!)
-                
-                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
-                    
-                    // save the new image into database profile
-                    let image = UIImage(data: data)
-                    var query = PFQuery(className:"_User")
-                    var id: String?
-                    println("photo username is: \(PFUser.currentUser()!.username!)")
-                    query.whereKey("username", equalTo: PFUser.currentUser()!.username!)
-                    query.findObjectsInBackgroundWithBlock ({(objects:[AnyObject]?, error: NSError?) in
-                    let objects = objects as! [PFObject]
-                        for object in objects {
-                            id = object["objectId"] as? String
-                            println(id)
-                            println("in the for loop for login")
-                            var newQuery = PFQuery(className:"_User")
-                            newQuery.getObjectInBackgroundWithId("XWU5JxQ2NN") {
-                                (user: PFObject?, error: NSError?) -> Void in
-                                if error != nil {
-                                    println(error)
-                                }
-                                else if let user = user {
-                                    println("saving new image")
-                                    user["Image"] = image
-                                    user.saveInBackground()
-                                }
-                            }
-                        }
-                    })
-
-//                    self.imgProfile.image = image
-                    
-                }
+                let id: String = result.valueForKey("id") as! String
+                var photoURL:String = "https://graph.facebook.com/\(id)/picture?type=large"
+                println("here is the url: \(photoURL) ")
+                var NSPhotoURL: NSURL = NSURL(string: photoURL)!
+                let urlRequest = NSURLRequest(URL: NSPhotoURL)
+                var data = NSData(contentsOfURL: NSPhotoURL)
+                let image = UIImage(data: data!)
+//                println("\(image)")
+                var query = PFUser.query()
+                println("photo username is: \(PFUser.currentUser()!.username!)")
+                query!.whereKey("username", equalTo: PFUser.currentUser()!.username!)
+                var user = query!.getFirstObject() as! PFUser
+                user["Image"] = PFFile(name: "profileImage.jpg", data: UIImageJPEGRepresentation(image, 1.0))
+                user.saveInBackground()
             }
         })
     }

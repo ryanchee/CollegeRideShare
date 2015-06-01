@@ -31,6 +31,8 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         populateTripsArray()
+        self.tripsCollectionView.reloadData()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -100,7 +102,7 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
             println("we have \(objects.count) objects)")
             for object in objects {
                 var date = object["DepartureDate"] as! NSDate
-                println("\(date) compared to \(NSDate())")
+//                println("\(date) compared to \(NSDate())")
                 if date.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                     let tripToAdd:Trip = Trip()
                     tripToAdd.driver = object["Driver"] as! PFUser
