@@ -41,15 +41,17 @@ class PostATripViewController: UIViewController {
             trip["MaxDropOffDistance"] = maxDropOffDistTextField.text.toInt()
             maxDropOffDistTextField.text = ""
             var dateString = departureDateMonthTextField.text + "-" + departureDateDayTextField.text + "-" + departureDateYearTextField.text
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            var date = dateFormatter.dateFromString(dateString)!
+
+
             departureDateYearTextField.text = ""
             departureDateMonthTextField.text = ""
             departureDateDayTextField.text = ""
-            trip["DepartureDateString"] = dateString
+            trip["DepartureDateString"] = dateFormatter.stringFromDate(date)
+            trip["DepartureDate"] = date
             // check how to use Date in parse trip["DepartureDate"]
-            
-            
-            
-            
             trip.saveInBackgroundWithTarget(nil, selector: nil)
             presentSaveConfirmation()
         }
