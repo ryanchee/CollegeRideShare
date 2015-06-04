@@ -55,9 +55,67 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     @IBAction func fbPressed(sender: AnyObject) {
-        
+        var permissions = ["public_profile", "email", "user_friends"]
+        //        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(<#launchOptions: [NSObject : AnyObject]?#>)
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) { [unowned self]
+            (user: PFUser?, error: NSError?) -> Void in
+            if let user = user {
+                if user.isNew {
+                    println("User signed up and logged in through Facebook!")
+                    self.returnUserData()
+                    self.performSegueWithIdentifier("SignedUp", sender: self)
+                    
+                } else {
+                    println("User logged in through Facebook!")
+                    println("photo username is: \(PFUser.currentUser()!.username!)")
+                    self.returnUserData()
+                    self.performSegueWithIdentifier("SignedUp", sender: self)
+                    
+                }
+            }
+            else {
+                println("Uh oh. The user cancelled the Facebook login.")
+            }
+        }
         
     }
+    
+    
+    func returnUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ [unowned self] (connection, result, error) ->  Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                println("Error: \(error)")
+            }
+            else
+            {
+                println("fetched user: \(result)")
+                let userName : String = result.valueForKey("name") as! String
+                println("User Name is: \(userName)")
+                let userEmail : String = result.valueForKey("email") as! String
+                println("User Email is: \(userEmail)")
+                let id: String = result.valueForKey("id") as! String
+                var photoURL:String = "https://graph.facebook.com/\(id)/picture?type=large"
+                println("here is the url: \(photoURL) ")
+                var NSPhotoURL: NSURL = NSURL(string: photoURL)!
+                let urlRequest = NSURLRequest(URL: NSPhotoURL)
+                var data = NSData(contentsOfURL: NSPhotoURL)
+                let image = UIImage(data: data!)
+                //                println("\(image)")
+                var query = PFUser.query()
+                println("photo username is: \(PFUser.currentUser()!.username!)")
+                query!.whereKey("username", equalTo: PFUser.currentUser()!.username!)
+                var user = query!.getFirstObject() as! PFUser
+                user["Image"] = PFFile(name: "profileImage.jpg", data: UIImageJPEGRepresentation(image, 1.0))
+                user.saveInBackground()
+            }
+            })
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
