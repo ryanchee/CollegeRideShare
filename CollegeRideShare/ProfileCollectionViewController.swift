@@ -12,6 +12,9 @@ import UIKit
 
 class ProfileCollectionViewController: UICollectionViewController {
     var trips: [Trip] = []
+    @IBAction func logout(sender: AnyObject) {
+        PFUser.logOut()
+    }
 
     @IBOutlet var tripsCollectionView: UICollectionView!
     override func viewDidLoad() {

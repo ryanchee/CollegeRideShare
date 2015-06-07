@@ -81,7 +81,12 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
         var driver = (query?.getFirstObject() as! PFUser)
         
         cell.driverPhoto.image = UIImage(data: (driver["Image"] as! PFFile).getData()!)
-        cell.driverName.text = driver.username
+        if let preferredname = driver["preferredname"] as? String {
+            cell.driverName.text = preferredname
+        }
+        else {
+            cell.driverName.text = driver.username
+        }
         cell.destination.text = trip.destination
         cell.price.text = "\(trip.price)"
         cell.departureDetails.text = trip.departureTime

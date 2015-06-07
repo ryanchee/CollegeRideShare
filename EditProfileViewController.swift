@@ -13,6 +13,8 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var car: UITextField!
     @IBOutlet weak var numSeats: UITextField!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var preferredname: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,14 @@ class EditProfileViewController: UIViewController {
             phoneNumber.text = userPhone
         }
         
+        if let userPreferredName = user?["preferredname"] as? String {
+            preferredname.text = userPreferredName
+        }
+        
+        if let userImage = user?["Image"] as? PFFile {
+            profileImageView.image = UIImage(data: userImage.getData()!)
+        }
+        
         var query = PFQuery(className:"Car")
         
         query.getObjectInBackgroundWithId(user?["car"]?.objectId as! String!!) {
@@ -72,6 +82,10 @@ class EditProfileViewController: UIViewController {
             user?["phoneNumber"] = phoneNumber
         }
         
+        if let preferredName = preferredname.text {
+            user?["preferredname"] = preferredName
+        }
+        
         if let car = car.text {
             if let seats = numSeats.text {
                 var userCar = PFObject(className:"Car")
@@ -80,7 +94,24 @@ class EditProfileViewController: UIViewController {
                 user?["car"] = userCar
             }
         }
-        
-        user?.saveInBackground()
+//        user?.saveInBackground()
+        user?.saveInBackgroundWithBlock { [unowned self]
+            (succeeded, error) -> Void in
+            if error == nil {
+                // Hooray! Let them use the app now.
+                let alert = UIAlertView()
+                alert.title = "Profile saved!"
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+            }
+            else {
+                let alert = UIAlertView()
+                alert.title = "Error"
+                alert.message = "There was an error saving your data."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                // Show the errorString somewhere and let the user try again.
+            }
+        }
     }
 }

@@ -110,6 +110,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                 println("photo username is: \(PFUser.currentUser()!.username!)")
                 query!.whereKey("username", equalTo: PFUser.currentUser()!.username!)
                 var user = query!.getFirstObject() as! PFUser
+                user["preferredname"] = userName
+//                user["lastname"] = userName
                 user["Image"] = PFFile(name: "profileImage.jpg", data: UIImageJPEGRepresentation(image, 1.0))
                 user.saveInBackground()
             }
