@@ -97,6 +97,17 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
     }
 
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detailtrip" {
+            let dest = segue.destinationViewController as! DetailTripCollectionViewController
+            let cell = sender as! TripCollectionViewCell
+            let index = self.tripsCollectionView.indexPathForCell(cell)!.row
+            println("index is \(index)")
+            dest.trip = trips[index]
+        }
+        println("\(segue.identifier)")
+    }
+    
     
     func populateTripsArray() {
         var query = PFQuery(className:"Trips")
@@ -116,6 +127,7 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
                     tripToAdd.departureTime = object["DepartureTime"] as! String
                     tripToAdd.departureDateString = object["DepartureDateString"] as! String
                     tripToAdd.departureDate = object["DepartureDate"] as! NSDate
+//                    tripToAdd.objectId = object["objectId"] as! String
                     //                tripToAdd.currentRiders = ["object.CurrentRiders"] as! [User]
                     //                tripToAdd.maxDropOffDistance = ["object.MaxDropOffDistance"] as! Int
                     self.trips.append(tripToAdd)

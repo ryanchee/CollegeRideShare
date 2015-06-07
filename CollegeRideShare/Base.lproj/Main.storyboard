@@ -1828,7 +1828,7 @@
                                     <outlet property="driverName" destination="nfo-xG-Q9f" id="J9a-pM-WnO"/>
                                     <outlet property="driverPhoto" destination="9gb-Q7-qma" id="pLh-Ty-HPx"/>
                                     <outlet property="price" destination="XB4-tV-lCX" id="KFd-1E-RbR"/>
-                                    <segue destination="ShI-Yb-uEU" kind="show" id="7By-I4-uuA"/>
+                                    <segue destination="ShI-Yb-uEU" kind="show" identifier="detailtrip" id="7By-I4-uuA"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

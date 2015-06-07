@@ -32,4 +32,5 @@ class Trip {
     var departureDate: NSDate!
     var currentRiders: [User]?
     var maxDropOffDistance: Int!
+    var objectId: String!
 }

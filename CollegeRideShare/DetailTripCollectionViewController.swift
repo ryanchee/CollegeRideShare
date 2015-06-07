@@ -11,10 +11,11 @@ import UIKit
 //let reuseIdentifier = "Cell"
 
 class DetailTripCollectionViewController: UICollectionViewController {
-
+    var trip: Trip?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -65,11 +66,25 @@ class DetailTripCollectionViewController: UICollectionViewController {
         
         if (kind == UICollectionElementKindSectionHeader) {
             reusableview = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "TripHeader", forIndexPath: indexPath) as? TripCollectionReusableView
-//            reusableview?.driverPhoto.image = getProfileImage()
-            reusableview?.driverName.text = "testing123"
-            reusableview?.destination.text = "132412"
-            reusableview?.price.text = "132412"
-            reusableview?.departureDetails.text = "132412"
+
+            
+            var query = PFUser.query()
+            println("\(trip!.driver!)")
+            query!.whereKey("objectId", equalTo:trip!.driver!.objectId!)
+            var driver = (query?.getFirstObject() as! PFUser)
+            
+            reusableview?.driverPhoto.image = UIImage(data: (driver["Image"] as! PFFile).getData()!)
+            if let preferredname = driver["preferredname"] as? String {
+                reusableview?.driverName.text = preferredname
+            }
+            else {
+                reusableview?.driverName.text = driver.username
+            }
+            reusableview?.destination.text = trip!.destination
+            reusableview?.price.text = "\(trip!.price)"
+            reusableview?.departureDetails.text = trip!.departureTime
+           reusableview?.departureDate.text = trip!.departureDateString
+            // Configure the cell
  
             //            NSString *title = [[NSString alloc]initWithFormat:@"Recipe Group #%i", indexPath.section + 1];
             //            headerView.title.text = title;
