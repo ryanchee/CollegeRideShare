@@ -120,13 +120,13 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        facebookButton = FBSDKLoginButton()
-        let loginView : FBSDKLoginButton = FBSDKLoginButton()
-        self.view.addSubview(loginView)
-        loginView.center = self.view.center
-        loginView.readPermissions = ["public_profile", "email", "user_friends"]
-        loginView.delegate = self
+//        
+//        facebookButton = FBSDKLoginButton()
+//        let loginView : FBSDKLoginButton = FBSDKLoginButton()
+//        self.view.addSubview(loginView)
+//        loginView.center = self.view.center
+//        loginView.readPermissions = ["public_profile", "email", "user_friends"]
+//        loginView.delegate = self
         // Do any additional setup after loading the view.
     }
     
