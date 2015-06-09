@@ -60,8 +60,18 @@ class ProfileCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("trip", forIndexPath: indexPath) as! TripCollectionViewCell
         let trip = trips[indexPath.row]
+        var query = PFQuery(className:"_User")
+        println("username is: \(PFUser.currentUser()!.username!)")
+        query.whereKey("username", equalTo:PFUser.currentUser()!.username!)
+        var user = query.getFirstObject() as! PFUser
+        if let preferredname = user["preferredname"] as? String {
+            cell.driverName.text = preferredname
+        }
+        else {
+            cell.driverName.text = PFUser.currentUser()!.username
+        }
         
-        cell.driverName.text = PFUser.currentUser()!.username
+        //cell.driverName.text = PFUser.currentUser()!.username
         cell.destination.text = trip.destination
         cell.price.text = "\(trip.price)"
         cell.departureDetails.text = trip.departureTime
