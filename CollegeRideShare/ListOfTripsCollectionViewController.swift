@@ -72,6 +72,7 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("trip", forIndexPath: indexPath) as! TripCollectionViewCell
+        
         let trip = trips[indexPath.row]
         //        cell.driverPhoto.image = UIImage(data: <#NSData#>)
         //getProfileImage()
@@ -98,14 +99,16 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "detailtrip" {
+        if segue.identifier! == "detailtrip" {
             let dest = segue.destinationViewController as! DetailTripCollectionViewController
             let cell = sender as! TripCollectionViewCell
             let index = self.tripsCollectionView.indexPathForCell(cell)!.row
             println("index is \(index)")
             dest.trip = trips[index]
+            
+            println("\(segue.identifier!)")
         }
-        println("\(segue.identifier)")
+        
     }
     
     
@@ -115,7 +118,7 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
         //        query.whereKey("Destination", equalTo: PFUser.currentUser()!.username!)
         query.findObjectsInBackgroundWithBlock { [unowned self] (objects:[AnyObject]?, error:NSError?) -> Void in
             let objects = objects as! [PFObject]
-            println("we have \(objects.count) objects)")
+            println("we have \(objects.count) objects")
             for object in objects {
                 var date = object["DepartureDate"] as! NSDate
 //                println("\(date) compared to \(NSDate())")
@@ -127,8 +130,12 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
                     tripToAdd.departureTime = object["DepartureTime"] as! String
                     tripToAdd.departureDateString = object["DepartureDateString"] as! String
                     tripToAdd.departureDate = object["DepartureDate"] as! NSDate
-//                    tripToAdd.objectId = object["objectId"] as! String
-                    //                tripToAdd.currentRiders = ["object.CurrentRiders"] as! [User]
+                    tripToAdd.objectId = object.objectId!
+                    tripToAdd.currentRiders = object["CurrentRiders"] as? [PFUser]
+                    tripToAdd.numSeats = object["NumberOfSeats"] as! Int
+                    //let eqe = tripToAdd.driver["Car"]
+                    //print(eqe)
+                    
                     //                tripToAdd.maxDropOffDistance = ["object.MaxDropOffDistance"] as! Int
                     self.trips.append(tripToAdd)
                 }

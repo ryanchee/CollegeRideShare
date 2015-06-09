@@ -30,7 +30,8 @@ class Trip {
     var departureTime: String!
     var departureDateString: String!
     var departureDate: NSDate!
-    var currentRiders: [User]?
+    var currentRiders: [PFUser]?
+    var numSeats: Int!
     var maxDropOffDistance: Int!
     var objectId: String!
 }

@@ -12,9 +12,18 @@ import UIKit
 
 class DetailTripCollectionViewController: UICollectionViewController {
     var trip: Trip?
+    var driver: PFUser!
+    var currentRiderIds: [String]?
+    @IBOutlet var riderCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateRiders()
+        
+        // initialize driver
+        var query = PFUser.query()
+        query!.whereKey("objectId", equalTo:trip!.driver!.objectId!)
+        driver = (query?.getFirstObject() as! PFUser)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,10 +63,16 @@ class DetailTripCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rider", forIndexPath: indexPath) as! RiderCollectionViewCell
+        
+        let currentRiders = trip?.currentRiders
+        let riderUser = currentRiders![indexPath.row]
+        let riderQuery = PFUser.query()
+        riderQuery!.whereKey("objectId", equalTo: riderUser.objectId!)
+        
+        cell.riderPhoto.image = UIImage(data: (driver["Image"] as! PFFile).getData()!)
+        cell.riderName.text = riderUser.objectId!
+        
         return cell
     }
     
@@ -66,12 +81,6 @@ class DetailTripCollectionViewController: UICollectionViewController {
         
         if (kind == UICollectionElementKindSectionHeader) {
             reusableview = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "TripHeader", forIndexPath: indexPath) as? TripCollectionReusableView
-
-            
-            var query = PFUser.query()
-            println("\(trip!.driver!)")
-            query!.whereKey("objectId", equalTo:trip!.driver!.objectId!)
-            var driver = (query?.getFirstObject() as! PFUser)
             
             reusableview?.driverPhoto.image = UIImage(data: (driver["Image"] as! PFFile).getData()!)
             if let preferredname = driver["preferredname"] as? String {
@@ -83,7 +92,7 @@ class DetailTripCollectionViewController: UICollectionViewController {
             reusableview?.destination.text = trip!.destination
             reusableview?.price.text = "\(trip!.price)"
             reusableview?.departureDetails.text = trip!.departureTime
-           reusableview?.departureDate.text = trip!.departureDateString
+            reusableview?.departureDate.text = trip!.departureDateString
             // Configure the cell
  
             //            NSString *title = [[NSString alloc]initWithFormat:@"Recipe Group #%i", indexPath.section + 1];
@@ -92,9 +101,73 @@ class DetailTripCollectionViewController: UICollectionViewController {
             //            headerView.backgroundImage.image = headerImage;
             //
         }
+        else {
+            //
+        }
+        
         return reusableview!
         
     }
+    
+    @IBAction func onSignUpPressed(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "\(driver.username!)'s Trip", message: "You are signing up for a trip to \(trip!.destination).", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            // ...
+        }
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            var query = PFQuery(className:"Trips")
+            query.getObjectInBackgroundWithId(self.trip!.objectId) {
+                [unowned self] (tripToUpdate: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    println(error)
+                }
+                else if let tripToUpdate = tripToUpdate {
+                    tripToUpdate.addUniqueObject(PFUser.currentUser()!, forKey:"CurrentRiders")
+                    tripToUpdate.save()
+                    self.populateRiders()
+                }
+            }
+        }
+        
+        for x in currentRiderIds! {
+            println(x)
+        }
+        
+        let x = PFUser.currentUser()!.description
+        println(x)
+        
+        if contains(currentRiderIds!, PFUser.currentUser()!.objectId!) {
+            alertController.message = "You have already signed up for this trip."
+        }
+        if trip!.currentRiders!.count == trip?.numSeats {
+            alertController.message = "The seats on this trip have already been filled."
+        }
+        else {
+            alertController.addAction(OKAction)
+        }
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+    }
+    
+    func populateRiders() {
+        if currentRiderIds == nil {
+            currentRiderIds = [String]()
+        }
+        
+        currentRiderIds!.removeAll(keepCapacity: true)
+        
+        for rider in trip!.currentRiders! {
+            currentRiderIds!.append(rider.objectId!)
+        }
+        
+        self.riderCollectionView.reloadData()
+    }
+    
 
 
     // MARK: UICollectionViewDelegate
