@@ -151,11 +151,14 @@ class DetailTripCollectionViewController: UICollectionViewController {
                 }
             }
         }
-                
-        if contains(currentRiderIds!, PFUser.currentUser()!.objectId!) {
+        
+        if driver.objectId! == PFUser.currentUser()!.objectId! {
+            alertController.message = "This is your trip."
+        }
+        else if contains(currentRiderIds!, PFUser.currentUser()!.objectId!) {
             alertController.message = "You have already signed up for this trip."
         }
-        else if currentRiderIds!.count == trip?.numSeats {
+        else if currentRiderIds!.count == trip!.numSeats {
             alertController.message = "The seats on this trip have already been filled."
         }
         else {
