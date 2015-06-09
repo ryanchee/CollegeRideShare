@@ -1265,13 +1265,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAK-J0-8fS">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OUf-2l-naa"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Facebook">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="115" y="314" width="171" height="30"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OUf-2l-naa"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="OUf-2l-naa"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <action selector="customFacebookLogin:" destination="ScH-fd-3p8" eventType="touchUpInside" id="FGr-KQ-sM0"/>
@@ -1283,12 +1293,14 @@
                             <constraint firstItem="5px-2P-D1f" firstAttribute="firstBaseline" secondItem="moa-28-CWq" secondAttribute="firstBaseline" id="4hs-2U-5NR"/>
                             <constraint firstItem="Cdy-iu-qvZ" firstAttribute="leading" secondItem="sJ2-em-1kc" secondAttribute="leading" id="75P-vJ-7pX"/>
                             <constraint firstItem="5px-2P-D1f" firstAttribute="leading" secondItem="moa-28-CWq" secondAttribute="trailing" constant="55" id="87U-v0-Ktf"/>
+                            <constraint firstItem="wAK-J0-8fS" firstAttribute="leading" secondItem="Cdy-iu-qvZ" secondAttribute="leading" id="BK8-tw-ECB"/>
                             <constraint firstItem="RBB-d4-R2n" firstAttribute="centerX" secondItem="m2J-SC-T32" secondAttribute="centerX" id="Dxb-mS-VgV">
                                 <variation key="widthClass=compact" constant="0.5"/>
                             </constraint>
                             <constraint firstItem="sJ2-em-1kc" firstAttribute="trailing" secondItem="Cdy-iu-qvZ" secondAttribute="trailing" id="Eze-3u-U5g"/>
                             <constraint firstItem="RBB-d4-R2n" firstAttribute="trailing" secondItem="sJ2-em-1kc" secondAttribute="trailing" id="I8Z-QE-TmV"/>
                             <constraint firstItem="HAe-FH-gwS" firstAttribute="top" secondItem="moa-28-CWq" secondAttribute="bottom" constant="5" id="Teo-zv-y4n"/>
+                            <constraint firstItem="wAK-J0-8fS" firstAttribute="trailing" secondItem="Cdy-iu-qvZ" secondAttribute="trailing" id="VfL-42-VoU"/>
                             <constraint firstItem="Cdy-iu-qvZ" firstAttribute="top" secondItem="sJ2-em-1kc" secondAttribute="bottom" constant="8" symbolic="YES" id="Wcm-cL-NO7"/>
                             <constraint firstItem="Fcn-Zs-rVJ" firstAttribute="leading" secondItem="moa-28-CWq" secondAttribute="trailing" constant="1" id="Ylx-o7-hw1"/>
                             <constraint firstItem="moa-28-CWq" firstAttribute="leading" secondItem="m2J-SC-T32" secondAttribute="leadingMargin" constant="57" id="Yv8-T7-eSB"/>
@@ -1297,6 +1309,7 @@
                             <constraint firstItem="sJ2-em-1kc" firstAttribute="top" secondItem="RBB-d4-R2n" secondAttribute="bottom" constant="2" id="mtX-VE-vB7">
                                 <variation key="widthClass=compact" constant="8"/>
                             </constraint>
+                            <constraint firstItem="wAK-J0-8fS" firstAttribute="top" secondItem="Cdy-iu-qvZ" secondAttribute="bottom" constant="8" symbolic="YES" id="oga-r1-U5B"/>
                             <constraint firstItem="sJ2-em-1kc" firstAttribute="leading" secondItem="RBB-d4-R2n" secondAttribute="leading" id="sc1-N8-sGD"/>
                             <constraint firstItem="RBB-d4-R2n" firstAttribute="top" secondItem="EtJ-l9-VDP" secondAttribute="bottom" constant="157" id="xTW-aN-LAr">
                                 <variation key="widthClass=compact" constant="180"/>
@@ -1321,9 +1334,12 @@
                                 <exclude reference="sc1-N8-sGD"/>
                                 <exclude reference="75P-vJ-7pX"/>
                                 <exclude reference="Wcm-cL-NO7"/>
-                                <exclude reference="Teo-zv-y4n"/>
+                                <exclude reference="BK8-tw-ECB"/>
+                                <exclude reference="VfL-42-VoU"/>
+                                <exclude reference="oga-r1-U5B"/>
                                 <exclude reference="Yv8-T7-eSB"/>
                                 <exclude reference="hI8-P2-pJF"/>
+                                <exclude reference="Teo-zv-y4n"/>
                                 <exclude reference="Ylx-o7-hw1"/>
                                 <exclude reference="dPz-dk-KbJ"/>
                                 <exclude reference="4hs-2U-5NR"/>
@@ -1349,9 +1365,12 @@
                                 <include reference="sc1-N8-sGD"/>
                                 <include reference="75P-vJ-7pX"/>
                                 <include reference="Wcm-cL-NO7"/>
-                                <include reference="Teo-zv-y4n"/>
+                                <include reference="BK8-tw-ECB"/>
+                                <include reference="VfL-42-VoU"/>
+                                <include reference="oga-r1-U5B"/>
                                 <include reference="Yv8-T7-eSB"/>
                                 <include reference="hI8-P2-pJF"/>
+                                <include reference="Teo-zv-y4n"/>
                                 <include reference="Ylx-o7-hw1"/>
                                 <include reference="dPz-dk-KbJ"/>
                                 <include reference="4hs-2U-5NR"/>
@@ -1435,7 +1454,9 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="QqJ-8Z-vQo"/>
+                                    <constraint firstAttribute="width" constant="82" id="QqJ-8Z-vQo">
+                                        <variation key="widthClass=compact" constant="170"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Facebook">
@@ -1447,8 +1468,7 @@
                                         <exclude reference="QqJ-8Z-vQo"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="115" y="306" width="170" height="34"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="QqJ-8Z-vQo"/>
                                     </mask>
