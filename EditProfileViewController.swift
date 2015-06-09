@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController {
+class EditProfileViewController: UIViewController, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var homeTown: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var car: UITextField!
@@ -28,6 +28,57 @@ class EditProfileViewController: UIViewController {
     }
     
 
+    @IBAction func changeProfilePhoto(sender: AnyObject) {
+        let alertController: UIAlertController = UIAlertController(title: "Choose photo from...", message: nil, preferredStyle: .ActionSheet)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { [unowned self] action -> Void in
+            //Do some stuff
+        }
+        alertController.addAction(cancelAction)
+        //Create and an option action
+        let camera = UIAlertAction(title: "Camera", style: .Default) { [unowned self] (_) in
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+                picker.sourceType = .Camera
+            }
+            else {
+                picker.sourceType = .PhotoLibrary
+            }
+            self.presentViewController(picker, animated: true, completion: nil)
+        }
+        let photoalbum = UIAlertAction(title: "Photo Album", style: .Default) { [unowned self] (_) in
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .PhotoLibrary
+            picker.allowsEditing = false
+            self.presentViewController(picker, animated: true, completion: nil)
+        }
+
+
+        alertController.addAction(camera)
+        alertController.addAction(photoalbum)
+        
+        //Present the AlertController
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        println("we got an image\n");
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        profileImageView.image = chosenImage
+        dismissViewControllerAnimated(true, completion: nil) //5
+
+//        setProfileFields()
+        //reload datat here
+        //self.collectionViewTable.reloadData()
+    }
     /*
     // MARK: - Navigation
 
@@ -73,6 +124,12 @@ class EditProfileViewController: UIViewController {
     
     @IBAction func UpdateUser(sender: AnyObject) {
         var user = PFUser.currentUser()
+        
+        if let photo = profileImageView.image {
+            let imageData = UIImagePNGRepresentation(photo)
+            let imageFile = PFFile(name:"image.png", data: imageData)
+            user?["Image"] = imageFile
+        }
         
         if let homeTown = homeTown.text {
             user?["homeTown"] = homeTown
