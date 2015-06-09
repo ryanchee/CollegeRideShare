@@ -26,14 +26,10 @@ class ListOfTripsCollectionViewController: UICollectionViewController {
             }
         }
     }
-    override func viewWillAppear(animated: Bool) {
-        populateTripsArray()
-        self.tripsCollectionView.reloadData()
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        trips = []
         populateTripsArray()
         self.tripsCollectionView.reloadData()
 
