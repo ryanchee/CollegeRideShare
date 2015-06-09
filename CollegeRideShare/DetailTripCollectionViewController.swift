@@ -18,12 +18,21 @@ class DetailTripCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateRiders()
         
         // initialize driver
         var query = PFUser.query()
         query!.whereKey("objectId", equalTo:trip!.driver!.objectId!)
         driver = (query?.getFirstObject() as! PFUser)
+        
+        if currentRiderIds == nil {
+            currentRiderIds = [String]()
+        }
+        
+        currentRiderIds!.removeAll(keepCapacity: true)
+        
+        for rider in trip!.currentRiders! {
+            currentRiderIds!.append(rider.objectId!)
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -127,7 +136,8 @@ class DetailTripCollectionViewController: UICollectionViewController {
                 else if let tripToUpdate = tripToUpdate {
                     tripToUpdate.addUniqueObject(PFUser.currentUser()!, forKey:"CurrentRiders")
                     tripToUpdate.save()
-                    self.populateRiders()
+                    self.currentRiderIds!.append(PFUser.currentUser()!.objectId!)
+                    self.riderCollectionView.reloadData()
                 }
             }
         }
@@ -152,20 +162,6 @@ class DetailTripCollectionViewController: UICollectionViewController {
         self.presentViewController(alertController, animated: true) {
             // ...
         }
-    }
-    
-    func populateRiders() {
-        if currentRiderIds == nil {
-            currentRiderIds = [String]()
-        }
-        
-        currentRiderIds!.removeAll(keepCapacity: true)
-        
-        for rider in trip!.currentRiders! {
-            currentRiderIds!.append(rider.objectId!)
-        }
-        
-        self.riderCollectionView.reloadData()
     }
     
 

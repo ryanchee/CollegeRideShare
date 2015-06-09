@@ -98,12 +98,6 @@
                                     <action selector="postButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="4IT-9v-nSs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DepartureDate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLv-Ui-3UO">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPm-g2-QzL">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <constraints>
@@ -149,6 +143,12 @@
                                     </mask>
                                 </variation>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLv-Ui-3UO">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -174,7 +174,9 @@
                             <constraint firstItem="imT-6D-gm5" firstAttribute="top" secondItem="L3A-jW-SpN" secondAttribute="bottom" constant="17" id="McJ-LN-MyK"/>
                             <constraint firstItem="IMi-aL-a6n" firstAttribute="top" secondItem="QZf-4g-m1n" secondAttribute="bottom" constant="8" id="MvN-Jb-kIL"/>
                             <constraint firstItem="fLv-Ui-3UO" firstAttribute="top" secondItem="KNF-IJ-5C1" secondAttribute="bottom" constant="17" id="QpM-cq-u9Q"/>
-                            <constraint firstItem="zPm-g2-QzL" firstAttribute="leading" secondItem="fLv-Ui-3UO" secondAttribute="trailing" constant="73" id="Sby-ew-D4f"/>
+                            <constraint firstItem="zPm-g2-QzL" firstAttribute="leading" secondItem="fLv-Ui-3UO" secondAttribute="trailing" constant="73" id="Sby-ew-D4f">
+                                <variation key="widthClass=compact" constant="62"/>
+                            </constraint>
                             <constraint firstItem="rHO-HQ-S97" firstAttribute="leading" secondItem="mah-bY-YHe" secondAttribute="leading" id="VZg-VH-Frq"/>
                             <constraint firstItem="QZf-4g-m1n" firstAttribute="top" secondItem="XrQ-9c-WiK" secondAttribute="bottom" constant="8" symbolic="YES" id="Vr9-0w-020"/>
                             <constraint firstItem="rHO-HQ-S97" firstAttribute="baseline" secondItem="fnQ-B0-co6" secondAttribute="baseline" id="XYl-Tb-TZg"/>
@@ -212,10 +214,10 @@
                                 <exclude reference="fnQ-B0-co6"/>
                                 <exclude reference="rHO-HQ-S97"/>
                                 <exclude reference="TJR-aI-nkU"/>
-                                <exclude reference="fLv-Ui-3UO"/>
                                 <exclude reference="zPm-g2-QzL"/>
                                 <exclude reference="f6L-1b-8Yb"/>
                                 <exclude reference="IMi-aL-a6n"/>
+                                <exclude reference="fLv-Ui-3UO"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="43e-RU-bg7"/>
@@ -273,10 +275,10 @@
                                 <include reference="fnQ-B0-co6"/>
                                 <include reference="rHO-HQ-S97"/>
                                 <include reference="TJR-aI-nkU"/>
-                                <include reference="fLv-Ui-3UO"/>
                                 <include reference="zPm-g2-QzL"/>
                                 <include reference="f6L-1b-8Yb"/>
                                 <include reference="IMi-aL-a6n"/>
+                                <include reference="fLv-Ui-3UO"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="43e-RU-bg7"/>
