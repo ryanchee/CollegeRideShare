@@ -30,8 +30,10 @@ class DetailTripCollectionViewController: UICollectionViewController {
         
         currentRiderIds!.removeAll(keepCapacity: true)
         
-        for rider in trip!.currentRiders! {
-            currentRiderIds!.append(rider.objectId!)
+        if let riderArray = trip!.currentRiders {
+            for rider in riderArray {
+                currentRiderIds!.append(rider.objectId!)
+            }
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -68,19 +70,20 @@ class DetailTripCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return 1
+        return currentRiderIds!.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("rider", forIndexPath: indexPath) as! RiderCollectionViewCell
         
-        let currentRiders = trip?.currentRiders
-        let riderUser = currentRiders![indexPath.row]
-        let riderQuery = PFUser.query()
-        riderQuery!.whereKey("objectId", equalTo: riderUser.objectId!)
+        if currentRiderIds!.count > 0 {
+            let riderUser = currentRiderIds![indexPath.row]
+            let riderQuery = PFUser.query()
+            riderQuery!.whereKey("objectId", equalTo: riderUser)
         
-        cell.riderPhoto.image = UIImage(data: (driver["Image"] as! PFFile).getData()!)
-        cell.riderName.text = riderUser.objectId!
+            cell.riderPhoto.image = UIImage(data: (driver["Image"] as! PFFile).getData()!)
+            cell.riderName.text = riderUser
+        }
         
         return cell
     }
@@ -135,24 +138,24 @@ class DetailTripCollectionViewController: UICollectionViewController {
                 }
                 else if let tripToUpdate = tripToUpdate {
                     tripToUpdate.addUniqueObject(PFUser.currentUser()!, forKey:"CurrentRiders")
-                    tripToUpdate.save()
-                    self.currentRiderIds!.append(PFUser.currentUser()!.objectId!)
-                    self.riderCollectionView.reloadData()
+                    tripToUpdate.saveInBackgroundWithBlock {
+                        (success, error) -> Void in
+                        if success {
+                            self.currentRiderIds!.append(PFUser.currentUser()!.objectId!)
+                            self.riderCollectionView.reloadData()
+                        }
+                        else {
+                            NSLog("%@", error!)
+                        }
+                    }
                 }
             }
         }
-        
-        for x in currentRiderIds! {
-            println(x)
-        }
-        
-        let x = PFUser.currentUser()!.description
-        println(x)
-        
+                
         if contains(currentRiderIds!, PFUser.currentUser()!.objectId!) {
             alertController.message = "You have already signed up for this trip."
         }
-        if trip!.currentRiders!.count == trip?.numSeats {
+        else if currentRiderIds!.count == trip?.numSeats {
             alertController.message = "The seats on this trip have already been filled."
         }
         else {
